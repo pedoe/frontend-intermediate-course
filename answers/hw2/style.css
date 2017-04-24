@@ -1,0 +1,56 @@
+body{
+	background-image: url("images/bg-default.jpg");
+	background-attachment: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	background-size: 100% 100%;
+	overflow: scroll;
+}
+
+.content{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.container{
+	display: inline-flex;;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 300px;
+	padding: 20px;
+}
+
+.twitch{
+	width: 300px;
+	height: 200px;
+}
+
+.user{
+	width: 300px;
+	height: 100px;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.container:hover > .user, .container:hover > .twitch{
+	box-shadow: 3px 3px 3px;
+	filter: brightness(110%);
+	transition: .1s;
+}
+
+.user_profile{
+	float: left;
+	width: 70px;
+	height: 90px;
+	margin: 0px;
+	margin-top: 5px;
+	margin-left: 5px;
+	border-radius: 50%;
+}
+
+.user_content{
+	margin: 0px;
+	margin-left: 100px;
+	margin-top: 15px;
+	font-family:"Times New Roman";
+	color: grey;
+}
