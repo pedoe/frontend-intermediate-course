@@ -32,9 +32,10 @@ body{
 }
 
 .container:hover > .user, .container:hover > .twitch{
+	cursor: pointer;
 	box-shadow: 3px 3px 3px;
-	filter: brightness(110%);
-	transition: .1s;
+	filter: brightness(130%);
+	transition: .3s;
 }
 
 .user_profile{
