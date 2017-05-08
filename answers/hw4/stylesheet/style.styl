@@ -1,0 +1,51 @@
+body
+	background-image url("images/bg-default.jpg")
+	background-attachment fixed
+	background-color rgba(0, 0, 0, 0.5)
+	background-size 100% 100%
+	overflow scroll
+
+	.content
+		display flex
+		flex-wrap wrap
+		justify-content space-around
+
+	.container
+		display inline-flex
+		flex-wrap wrap
+		width 320px
+		height 260px
+		margin 20px
+		transition .3s
+
+		&:hover
+			box-shadow 3px 3px 3px
+			filter brightness(110%)
+
+	.twitch
+		width 320px
+		height 180px
+
+	.user
+		width 320px
+		height 80px
+		background rgba(0, 0, 0, 0.4)
+
+	.user_profile
+		float left
+		width 70px
+		height 70px
+		margin 0px
+		margin-top 6px
+		margin-left 8px
+		border-radius 50%
+
+	.user_content
+		margin 0px
+		margin-left 100px
+		margin-top 15px
+		font-family "Times New Roman"
+		color grey
+		white-space: nowrap
+		text-overflow: ellipsis
+		overflow: hidden

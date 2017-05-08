@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.min.css"></link>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+  <script>
+	$(document).ready(function(){
+		
+		var contentDiv = document.createElement('div');
+		contentDiv.className = "content";
+		document.body.appendChild(contentDiv);
+		
+		$.ajax({
+			type: 'GET',
+			headers:{
+				'Accept': 'application/vnd.twitchtv.v5+json',
+				'Client-ID': 'rjic6i7bbmd2t6m8igd0pojyaisrms'
+			},
+			url: 'https://api.twitch.tv/kraken/streams/?game=League%20of%20Legends',
+			dataType:'json',
+			success:function(result){
+				for(var i = 0; i < 20; i++){
+					var img = result.streams[i].preview.medium;
+					var userProfile = result.streams[i].channel.logo;
+					var channelName = result.streams[i].channel.status;
+					var broadcaster = result.streams[i].channel.name;
+					console.log(result.streams[i]);
+					createChannel(img, userProfile, channelName, broadcaster);
+				}
+			},
+			error:function(xhr, ajaxOptions,throwError){
+			console.log(xhr.status);
+			console.log(throwError);
+			}
+		})	
+	
+		function createChannel(imgSrc, userProfile, channelName, broadcaster){
+			var containerDiv = document.createElement('div');
+			containerDiv.className = "container";
+			contentDiv.appendChild(containerDiv);
+
+			var twitchImg = document.createElement('img');
+			twitchImg.className = "twitch";
+			twitchImg.src=imgSrc;
+			containerDiv.appendChild(twitchImg);
+
+			var userDiv = document.createElement('div');
+			userDiv.className = "user";
+			containerDiv.appendChild(userDiv);
+			
+			var userProfileImg = document.createElement('img');
+			userProfileImg.className = "user_profile";
+			userProfileImg.src=userProfile;
+			userDiv.appendChild(userProfileImg);
+			
+			var userChannel = document.createElement('p');
+			var userChannelContent = document.createTextNode("頻道名稱: " + channelName);
+			userChannel.className = "user_content";
+			userChannel.appendChild(userChannelContent);
+			userDiv.appendChild(userChannel);
+			
+			var userName = document.createElement('p');
+			var userNameContent = document.createTextNode("實況主名字: " + broadcaster);
+			userName.className = "user_content";
+			userName.appendChild(userNameContent);
+			userDiv.appendChild(userName);
+		}
+	});
+  </script>
+  </body>
+</html>
