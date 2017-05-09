@@ -22,7 +22,9 @@
 			url: 'https://api.twitch.tv/kraken/streams/?game=League%20of%20Legends',
 			dataType:'json',
 			success:function(result){
-				for(var i = 0; i < 20; i++){
+				for(var i = 0; i < result.streams.length; i++){
+					if(i >= 20)
+						break;
 					var img = result.streams[i].preview.medium;
 					var userProfile = result.streams[i].channel.logo;
 					var channelName = result.streams[i].channel.status;
@@ -30,6 +32,9 @@
 					console.log(result.streams[i]);
 					createChannel(img, userProfile, channelName, broadcaster);
 				}
+				var containerDiv = document.createElement('div');
+				containerDiv.className = "container";
+				contentDiv.appendChild(containerDiv);
 			},
 			error:function(xhr, ajaxOptions,throwError){
 			console.log(xhr.status);
