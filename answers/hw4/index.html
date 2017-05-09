@@ -19,12 +19,10 @@
 				'Accept': 'application/vnd.twitchtv.v5+json',
 				'Client-ID': 'rjic6i7bbmd2t6m8igd0pojyaisrms'
 			},
-			url: 'https://api.twitch.tv/kraken/streams/?game=League%20of%20Legends',
+			url: 'https://api.twitch.tv/kraken/streams/?game=League%20of%20Legends&limit=20',
 			dataType:'json',
 			success:function(result){
 				for(var i = 0; i < result.streams.length; i++){
-					if(i >= 20)
-						break;
 					var img = result.streams[i].preview.medium;
 					var userProfile = result.streams[i].channel.logo;
 					var channelName = result.streams[i].channel.status;
